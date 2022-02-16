@@ -1,43 +1,51 @@
 //Name.Redacted || Coding_Duck || PM
 
+// CASE C performed +1 on prv version of code
+
+
 # include <bits/stdc++.h>	//iostream already included 
 
 using namespace std;
 typedef long long ll;
 
 int main() {
+
+    ofstream myfile;
+    myfile.open("D.txt");
+
+    ifstream inFile;
+    inFile.open("d_difficult.in.txt");
+
     ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
 
     ll Case,GPC,temp;
-    cin >> Case;
+    inFile >> Case;
     map<string,int> Ingredients;
     while(Case--){
         //Likes Loop
-        cin >> temp;
+        inFile >> temp;
         string s;
         while(temp--){
-            cin >> s;
+            inFile >> s;
             Ingredients[s]++;
         }
-        cin >> temp;
+        inFile >> temp;
         while(temp--){
-            cin >> s;
+            inFile >> s;
             
             Ingredients[s]--;
         }
     }
     ll count = 0;
     for(auto val : Ingredients){
-        if(val.second > 0){
+        if(val.second >= 0){
             count++;
         }
     }
-    cout << count << " ";
+    myfile << count << " ";
     for(auto val : Ingredients){
-        if(val.second > 0){
-            cout << val.first << " ";
+        if(val.second >= 0){
+            myfile << val.first << " ";
         }
     }
     return 0;
